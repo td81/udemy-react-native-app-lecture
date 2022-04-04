@@ -6,13 +6,7 @@ export default function App() {
     <View style={styles.container}>
       <View>四角を書いてみる</View>
       <View 
-        style = {{
-          height:100, 
-          width:'100%',
-          borderColor:'gray',
-          borderWidth:1
-        }}
-      ></View>
+        style = {itemContainer}></View>
     </View>
   );
 }
@@ -23,5 +17,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  itemContainer: {
+    height:100, 
+    width:'100%',
+    borderColor:'gray',
+    borderWidth:1
   },
 });
