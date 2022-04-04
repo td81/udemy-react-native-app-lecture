@@ -1,16 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <View>四角を書いてみる</View>
-      <View 
-        style = {itemContainer}></View>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -22,6 +12,26 @@ const styles = StyleSheet.create({
     height:100, 
     width:'100%',
     borderColor:'gray',
-    borderWidth:1
+    borderWidth:1,
+    flexDirection: 'row',
+  },
+  leftContainer: {
+    backgroundColor: 'red',
+    width:100,
+  },
+  rightConteiner: {
+    backgroundColor: 'blue',
+    flex: 1,
   },
 });
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+        <View style={styles.itemContainer}>
+          <View style={styles.leftContainer} />
+          <View style={styles.rightConteiner} />
+        </View>
+    </View>
+  );
+}
