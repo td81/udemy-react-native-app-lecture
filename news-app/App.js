@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import ListItem from './components/ListItem';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,27 +17,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   leftContainer: {
-    backgroundColor: 'red',
     width:100,
   },
   rightConteiner: {
-    backgroundColor: 'blue',
     flex: 1,
+    flexDirection: 'column',
+    padding: 10,
+    justifyContent: 'space-between' //文字の縦横位置の調整
   },
+  text: {
+    fontSize: 16,
+  },
+  subText: {
+    fontSize: 12,
+    color: 'gray',
+  }
 });
 
 export default function App() {
   return (
     <View style={styles.container}>
-        <View style={styles.itemContainer}>
-          <View style={styles.leftContainer}>
-            <Image
-              style={{width: 100, height: 100}}
-              source={{uri: 'https://i.picsum.photos/id/211/200/200.jpg?hmac=VJ4wl95YuQJMvM_1O83L3nSfTn20OxaVfWe0wNMZrIc'}}
-            />
-          </View>
-          <View style={styles.rightConteiner} />
-        </View>
+      <ListItem />
     </View>
   );
 }
