@@ -1,7 +1,8 @@
+import React, { useState } from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, FlatList, SafeAreaView } from 'react-native';
 import ListItem from './components/ListItem';
-import articles from './dummies/articles.json';
+import dummyArticles from './dummies/articles.json';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,6 +35,8 @@ const styles = StyleSheet.create({
 });
 
 export default function App() {
+  const [articles, setArticles] = useState(dummyArticles)
+
   //jsonから配列を生成
   //Reactあるある。配列を展開するときkeyがないと怒られる。indexからkeyを生成する
   // const items = articles.map( (article, index) => { return (    
