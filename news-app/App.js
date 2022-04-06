@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { StatusBar } from 'expo-status-bar';
+import React, { useState, useEffect } from 'react'
+import { setStatusBarNetworkActivityIndicatorVisible, StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, FlatList, SafeAreaView } from 'react-native';
 import ListItem from './components/ListItem';
 import dummyArticles from './dummies/articles.json';
@@ -35,7 +35,17 @@ const styles = StyleSheet.create({
 });
 
 export default function App() {
-  const [articles, setArticles] = useState(dummyArticles)
+  //useState
+  const [articles, setArticles] = useState([])
+  //useEffect:第2引数に空配列を渡すと、初回レンダー時のみ発火する
+  useEffect( () => {
+    alert("called");
+    const timer = setTimeout( () => {
+      setArticles(dummyArticles);
+    }, 2000)
+    //下記はクリーンナップ関数
+    return () => clearTimeout(timer);
+  },[])
 
   //jsonから配列を生成
   //Reactあるある。配列を展開するときkeyがないと怒られる。indexからkeyを生成する
