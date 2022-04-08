@@ -34,10 +34,13 @@ const styles = StyleSheet.create({
         <View style={styles.container}>
         <View style={styles.itemContainer}>
           <View style={styles.leftContainer}>
-            <Image
+            {!!imageUrl && (
+              <Image
               style={{width: 100, height: 100}}
               source={{ uri: imageUrl }}
-            />
+              />
+            )}
+
           </View>
           <View style={styles.rightConteiner}>
             <Text numberOfLines={3} style={styles.text}>
