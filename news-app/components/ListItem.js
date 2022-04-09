@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 const styles = StyleSheet.create({
     itemContainer: {
@@ -29,29 +29,28 @@ const styles = StyleSheet.create({
 
   //const ListItem = props => {
   //propsの中身を展開する(オブジェクトスプレッド演算子)
-  const ListItem = ({imageUrl, title, author}) => {
+  const ListItem = ({imageUrl, title, author, onPress}) => {
       return (
-        <View style={styles.container}>
-        <View style={styles.itemContainer}>
-          <View style={styles.leftContainer}>
-            {!!imageUrl && (
-              <Image
-              style={{width: 100, height: 100}}
-              source={{ uri: imageUrl }}
-              />
-            )}
-
-          </View>
-          <View style={styles.rightConteiner}>
-            <Text numberOfLines={3} style={styles.text}>
-              {title}
-            </Text>
-            <Text style={styles.subText}>
-              {author}
-            </Text>
-          </View>
-        </View>
-    </View>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
+            <View style={styles.itemContainer}>
+              <View style={styles.leftContainer}>
+                {!!imageUrl && (
+                  <Image
+                  style={{width: 100, height: 100}}
+                  source={{ uri: imageUrl }}
+                  />
+                )}
+              </View>
+              <View style={styles.rightConteiner}>
+                <Text numberOfLines={3} style={styles.text}>
+                  {title}
+                </Text>
+                <Text style={styles.subText}>
+                  {author}
+                </Text>
+              </View>
+            </View>
+        </TouchableOpacity>
       )      
   };
 

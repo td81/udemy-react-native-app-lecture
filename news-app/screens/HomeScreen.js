@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function HomeScreen() {
+export default function HomeScreen(props)  {
+  const { navigation } = props;
   //useState
   const [articles, setArticles] = useState([])
   //useEffect:第2引数に空配列を渡すと、初回レンダー時のみ発火する
@@ -67,6 +68,7 @@ export default function HomeScreen() {
             imageUrl={item.urlToImage}
             title={item.title}
             author={item.author}
+            onPress={() => navigation.navigate('Article', {article: item})}
           /> 
         )}
         keyExtractor={(item, index) => index.toString()}
