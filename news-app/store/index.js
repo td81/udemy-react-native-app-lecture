@@ -4,7 +4,7 @@ import userReducer from  './reducers/user';
 //デバッグ用のツール
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { persistReducer, persistStore } from 'redux-persist';
-import { AsyncStorageStatic } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //storeは巨大なjsonツリーのようなもの。下記にツリー構造を定義する。
 const rootReducer = combineReducers({
@@ -13,13 +13,13 @@ const rootReducer = combineReducers({
 
 const persistConfig = {
     key: 'root',
-    storage: AsyncStorageStatic,
+    storage: AsyncStorage,
     whitelist : ['user']
 }
 
-const persistReducer = persistReducer(persistConfig, rootReducer);
+const pReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(persistReducer, composeWithDevTools);
+const store = createStore(pReducer, composeWithDevTools);
 
 export const persistor = persistStore(store);
 export default store;
